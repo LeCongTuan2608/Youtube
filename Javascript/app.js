@@ -127,21 +127,3 @@ function Result(Array_Video) {
     Contents_video.insertAdjacentHTML('beforeend', output);
   }
 }
-
-// function Video_Active() {
-//   let Length = Video_List.length;
-//   for (let i = 0; i < Length; i++) {
-//     // if(Video_List[i].classList.contains("active")){
-//     //     Video_List[i].classList.remove("active");
-//     // }
-//     if (Video_List[i].getAttribute('index') == Index) {
-//       Video_List[i].classList.add('active');
-//     }
-//     Video_List[i].setAttribute('onclick', 'active(this)');
-//   }
-// }
-// function active(element) {
-//   let getIndex = element.getAttribute('index');
-//   Index = getIndex;
-//   Menu_Active();
-// }
