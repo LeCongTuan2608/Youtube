@@ -14,6 +14,7 @@ body {
 .container-header {
   width: 100%;
   position: fixed;
+  z-index: 10;
 }
 
 .container-header-child {
@@ -195,6 +196,7 @@ body {
 .position-left-menu-bar {
   position: fixed;
   padding: 0 7px;
+  z-index: 10;
 }
 
 .position-left-menu-bar ul li {
@@ -212,6 +214,7 @@ body {
 .position-left-menu-bar ul li.active {
   background-color: #d3d3d3;
   transition: 0.5s ease;
+  color: red;
 }
 
 .position-left-menu-bar ul li:hover {
@@ -267,12 +270,6 @@ body {
   cursor: pointer;
 }
 
-.container-body-content.active {
-  position: fixed;
-  height: 500px;
-  width: 500px;
-}
-
 .container-body-content a {
   text-decoration: none;
   color: black;
@@ -299,22 +296,38 @@ body {
 
 .container-body-content-title {
   display: flex;
+  padding: 5px;
 }
 
-.container-body-content-title-media {
-  padding: 0 5px;
-}
-
-.container-body-content-title-media h3 {
+.container-body-content-title img {
+  width: 40px;
   height: 40px;
-  font-size: 17px;
-  max-height: 4rem;
+  border-radius: 100rem;
+}
+
+.container-body-content-title-video {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-size: 18px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: normal;
+  line-height: 1;
+}
+
+.container-body-content-title-video span {
+  padding-top: 5px;
+  font-size: 15px;
+  line-height: 1;
+  color: #585858;
 }
 
 @media screen and (max-width: 1440px) {
@@ -351,7 +364,7 @@ body {
 }
 @media screen and (max-width: 1080px) {
   .container-header-child {
-    gap: 8%;
+    gap: 10%;
   }
 
   .header-ytb-center-seach-input {
@@ -364,15 +377,19 @@ body {
 }
 @media screen and (max-width: 996px) {
   .container-header-child {
-    gap: 3%;
+    gap: 0;
+  }
+
+  .header-ytb-center-seach {
+    padding: 0;
   }
 
   .header-ytb-center-seach-input {
-    width: 100%;
+    width: 80%;
   }
 
   .heaer-ytb-right-style {
-    gap: 20px;
+    gap: 15px;
   }
 
   .container-body-position-right {

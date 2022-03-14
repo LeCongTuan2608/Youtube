@@ -3,7 +3,6 @@ let Index = 0;
 
 window.addEventListener('load', () => {
   Menu_Active();
-  // let KeyWord = 'top thịnh hành youtube';
   search();
 });
 
@@ -61,9 +60,15 @@ function clicked(element) {
 const KeyWord = document.querySelector('.key_word');
 const Btn_Search = document.querySelector('.btn-seach');
 Btn_Search.addEventListener('click', () => {
-  console.log(KeyWord.value);
-  search();
+  if (KeyWord.value == '') {
+    alert('Bạn chưa nhập dữ liệu vào thanh tìm kiếm');
+  }
+  // console.log(KeyWord.value);
+  if (KeyWord.value != '') {
+    search();
+  }
 });
+// bắt sự kiện enter
 const Enter = document.querySelector('.key_word');
 Enter.addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {
@@ -73,26 +78,39 @@ Enter.addEventListener('keyup', function (event) {
 });
 
 const url = 'https://www.googleapis.com/youtube/v3/search?';
-const parameter = 'part=snippet&maxResults=50&type=video';
+const parameter = 'part=snippet&maxResults=40&type=video';
 const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
+const Array_Video = []; //tạo 1 cái mảng rỗng
 function search() {
+  Array_Video.shift(); // xóa phần tử đầu tiên trong mảng
   fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
     .then(async (data) => data.json())
-    // .then(data => console.log(data));
-
+    // .then(data => console.log(data));    // cách 1
     .then(function (data) {
-      Result(data);
+      // cách 2
+      console.log(data);
+      Array_Video.push(data); //thêm data vào mảng
+      Result(Array_Video);
     });
 }
 
 const Contents_video = document.querySelector('.container-body-contents');
-function Result(data) {
+function Result(Array_Video) {
+  let Content = document.querySelectorAll('.container-body-content');
+  let Length_Content = Content.length;
+  if (KeyWord.value != '') {
+    // (if) nếu thanh tìm kiếm khác rỗng thì thực hiện
+    for (let index = 0; index < Length_Content; index++) {
+      Contents_video.removeChild(Content[index]); // xóa element
+    }
+  }
+
   let Url_youtube = 'http://www.youtube.com/watch?v=';
-  let Length_Video = data.items.length;
+  let Length_Video = Array_Video[0].items.length;
   for (let i = 0; i < Length_Video; i++) {
-    let Id_video = data.items[i].id.videoId;
-    let Thumbnails = data.items[i].snippet.thumbnails.medium.url;
-    let Title = data.items[i].snippet.title;
+    let Id_video = Array_Video[0].items[i].id.videoId;
+    let Thumbnails = Array_Video[0].items[i].snippet.thumbnails.medium.url;
+    let Title = Array_Video[0].items[i].snippet.title;
     let output = `
                 <div class="container-body-content">
                   <a class="link" href="${Url_youtube + Id_video}">
@@ -107,31 +125,23 @@ function Result(data) {
                   </a>
                 </div>`;
     Contents_video.insertAdjacentHTML('beforeend', output);
-    // console.log(Url_youtube+Id_video)
-    // var List_Video = [];
-    // List_Video.push(output);
-    // console.log(List_Video);
   }
-  // List_Video.splice(0, Length_Video);
-  // console.log(List_Video);
-  const Video_List = document.querySelectorAll('.container-body-content');
-  console.log(Video_List);
 }
 
-function Video_Active() {
-  let Length = Video_List.length;
-  for (let i = 0; i < Length; i++) {
-    // if(Video_List[i].classList.contains("active")){
-    //     Video_List[i].classList.remove("active");
-    // }
-    if (Video_List[i].getAttribute('index') == Index) {
-      Video_List[i].classList.add('active');
-    }
-    Video_List[i].setAttribute('onclick', 'active(this)');
-  }
-}
-function active(element) {
-  let getIndex = element.getAttribute('index');
-  Index = getIndex;
-  Menu_Active();
-}
+// function Video_Active() {
+//   let Length = Video_List.length;
+//   for (let i = 0; i < Length; i++) {
+//     // if(Video_List[i].classList.contains("active")){
+//     //     Video_List[i].classList.remove("active");
+//     // }
+//     if (Video_List[i].getAttribute('index') == Index) {
+//       Video_List[i].classList.add('active');
+//     }
+//     Video_List[i].setAttribute('onclick', 'active(this)');
+//   }
+// }
+// function active(element) {
+//   let getIndex = element.getAttribute('index');
+//   Index = getIndex;
+//   Menu_Active();
+// }
