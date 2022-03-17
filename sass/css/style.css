@@ -191,6 +191,7 @@ body {
   background-color: #ffffff;
   padding: 15px 0;
   margin-top: 57px;
+  position: relative;
 }
 
 .position-left-menu-bar {
@@ -241,7 +242,7 @@ body {
 .container-body-position-left-menu-width {
   padding: 15px 0;
   width: 80px;
-  height: auto;
+  height: 625px;
   justify-content: center;
   background-color: #ffffff;
   padding-top: 70px;
@@ -327,7 +328,7 @@ body {
   padding-top: 5px;
   font-size: 15px;
   line-height: 1;
-  color: #585858;
+  color: #4d4d4d;
 }
 
 @media screen and (max-width: 1440px) {
