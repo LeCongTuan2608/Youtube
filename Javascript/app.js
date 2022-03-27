@@ -2,14 +2,13 @@ let Menu_Click = true;
 let Index = 0;
 
 window.addEventListener('load', () => {
-   // kiểu viết tắt của function(){}
    Menu_Active();
    search();
 });
 
 const ReLoad = document.querySelector('.header-ytb-left-logo-child');
 ReLoad.addEventListener('click', () => {
-   window.location.reload(true);
+   window.location.replace('index.html');
 });
 
 const Btn_Menu = document.querySelector('.header-ytb-left-button-menu');
@@ -70,27 +69,29 @@ Enter.addEventListener('keyup', function (event) {
       document.querySelector('.btn-seach').click();
    }
 });
-
 // let url = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&key=" + apiKey + "&part=snippet,contentDetails";
 const url = 'https://youtube.googleapis.com/youtube/v3/search?';
-const parameter = 'part=snippet&maxResults=40&type=video';
+const parameter = 'part=snippet&maxResults=50&type=video';
 const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
 const Array_Video = []; //tạo 1 cái mảng rỗng
+
 function search() {
    Array_Video.shift(); // xóa phần tử đầu tiên trong mảng
    fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
       .then(async (data) => data.json())
-      // .then(data => console.log(data));    // cách 1
       .then(function (data) {
-         // cách 2
-         console.log(data);
+         // data.items.map((item) => {
+         //    return Array_Video.push(item);
+         // });
          Array_Video.push(data); //thêm data vào mảng
          Result(Array_Video);
       })
       .catch(function (err) {
-         alert('Có lỗi khi fetch API!!!');
+         // alert('Có lỗi khi fetch API!!!');
       });
 }
+// console.log('show', Array_Video);
+export { Array_Video };
 
 const Contents_video = document.querySelector('.container-body-contents');
 function Result(Array_Video) {
@@ -102,7 +103,6 @@ function Result(Array_Video) {
          Contents_video.removeChild(Content[index]); // xóa element
       }
    }
-
    let Url_youtube = 'http://www.youtube.com/watch?v=';
    let Length_Video = Array_Video[0].items.length;
    for (let i = 0; i < Length_Video; i++) {
