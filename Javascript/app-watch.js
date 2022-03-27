@@ -111,28 +111,6 @@ icon_Dislike.addEventListener('click', function () {
    }
 });
 
-// const url = 'https://youtube.googleapis.com/youtube/v3/search?';
-// const parameter = 'part=snippet&maxResults=50&type=video';
-// const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
-// const Array_Video = []; //tạo 1 cái mảng rỗng
-
-// function search() {
-//    Array_Video.shift(); // xóa phần tử đầu tiên trong mảng
-//    fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
-//       .then(async (data) => data.json())
-//       .then(function (data) {
-//          window.location.replace('index.html');
-//          // data.items.map((item) => {
-//          //    return Array_Video.push(item);
-//          // });
-//          Array_Video.push(data); //thêm data vào mảng
-
-//          Result(Array_Video);
-//       })
-//       .catch(function (err) {
-//          alert('Có lỗi khi fetch API!!!');
-//       });
-// }
 import { Array_Video } from './app.js';
 console.log('show:', Array_Video);
 console.log('show:', Array_Video[0]);
