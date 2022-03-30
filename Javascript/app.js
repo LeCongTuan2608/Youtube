@@ -129,7 +129,9 @@ function Result(Array_Video) {
                </div>`;
       Content[i].onclick = function () {
          let getIndex = Content[i].getAttribute('index');
+         console.log(getIndex);
          Index = getIndex;
+
          if (Content[i].getAttribute('index') == Index) {
             let getID = Content_id[i].getAttribute('id-video');
             Id_Video_Watch = getID;
