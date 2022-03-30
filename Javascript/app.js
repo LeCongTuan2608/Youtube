@@ -113,7 +113,6 @@ function Result(Array_Video) {
       let Title = Array_Video[i].snippet.title;
       let src = 'http://www.youtube.com/watch?v=';
       Id_Video_Watch = Id_video;
-      Title_Video_Watch = Title;
       let output = `
                <div class="container-body-content index = ${i}">
                   <a class="link id-video = ${Id_video}" href="watch.html" >
@@ -129,9 +128,10 @@ function Result(Array_Video) {
                </div>`;
       Content[i].onclick = function () {
          let getIndex = Content[i].getAttribute('index');
-         console.log(getIndex);
-         Index = getIndex;
+         // console.log(getIndex);
+         Title_Video_Watch = getIndex;
 
+         Index = getIndex;
          if (Content[i].getAttribute('index') == Index) {
             let getID = Content_id[i].getAttribute('id-video');
             Id_Video_Watch = getID;
