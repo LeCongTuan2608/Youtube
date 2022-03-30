@@ -1,3 +1,10 @@
+let Array_Video = JSON.parse(localStorage.getItem('Array_Video')); // đưa cái string trở về cái mảng
+console.log(Array_Video);
+
+import { Id_Video_Watch, Title_Video_Watch } from './app.js';
+console.log(Id_Video_Watch);
+console.log(Title_Video_Watch);
+
 let Menu_Click = true;
 let Index = 0;
 
@@ -64,24 +71,24 @@ Btn_Menu.addEventListener('click', function () {
    }
 });
 // bật tắt thanh menu
-function Menu_Active() {
-   let Menu_icon_List = document.querySelectorAll('.position-left-menu-bar ul li');
-   let Length = Menu_icon_List.length;
-   for (let i = 0; i < Length; i++) {
-      if (Menu_icon_List[i].classList.contains('active')) {
-         Menu_icon_List[i].classList.remove('active');
-      }
-      if (Menu_icon_List[i].getAttribute('index') == Index) {
-         Menu_icon_List[i].classList.add('active');
-      }
-      Menu_icon_List[i].setAttribute('onclick', 'clicked(this)');
-   }
-}
-function clicked(element) {
-   let getIndex = element.getAttribute('index');
-   Index = getIndex;
-   Menu_Active();
-}
+// function Menu_Active() {
+//    let Menu_icon_List = document.querySelectorAll('.position-left-menu-bar ul li');
+//    let Length = Menu_icon_List.length;
+//    for (let i = 0; i < Length; i++) {
+//       if (Menu_icon_List[i].classList.contains('active')) {
+//          Menu_icon_List[i].classList.remove('active');
+//       }
+//       if (Menu_icon_List[i].getAttribute('index') == Index) {
+//          Menu_icon_List[i].classList.add('active');
+//       }
+//       Menu_icon_List[i].setAttribute('onclick', 'clicked(this)');
+//    }
+// }
+// function clicked(element) {
+//    let getIndex = element.getAttribute('index');
+//    Index = getIndex;
+//    Menu_Active();
+// }
 
 // Like_Dislike();
 const icon_Like = document.querySelector('.icon-like');
@@ -111,34 +118,50 @@ icon_Dislike.addEventListener('click', function () {
    }
 });
 
-import { Array_Video } from './app.js';
-console.log('show:', Array_Video);
-console.log('show:', Array_Video[0]);
-// async function await_result() {
-//    let Result_Array = Array_Video;
-//    return Result_Array;
-// }
-// await_result(Array_Video).then(function (value) {
-//    console.log(value);
-//    console.log(value[0]);
-// });
-function Result_watch(Array_Video) {
+const Video_Watch = document.querySelector('.ytb-video');
+const Title_Video = document.querySelector('.title');
+function Video_Watching() {
+   let Iframe = document.querySelector('.iframe_cls');
+   let title_music = document.querySelector('.title h2');
+   Video_Watch.removeChild(Iframe);
+   Title_Video.removeChild(title_music);
+   //Title_Video_Watch = tên bài hát
+   // Id_Video_Watch = id của video
+   let src_video = 'https://www.youtube.com/embed/';
+   let id = 'y576-ONm5II';
+   let output = `
+         <iframe
+            class="iframe_cls"
+            src="${src_video + id}"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen 
+         ></iframe>`;
+   let output_Title = `
+         <div class="title">
+            <h2>${Title_Video_Watch}</h2>
+         </div>`;
+   Video_Watch.insertAdjacentHTML('beforeend', output);
+   Title_Video.insertAdjacentHTML('beforeend', output_Title);
+}
+Video_Watching();
+function Result_watch() {
    const Contents_video = document.querySelector('.ytb-list-contents');
-   let Length_Video = Array_Video[0].items.length;
+   let Length_Video = Array_Video.length;
+   // console.log('lenght:', Length_Video);
    for (let i = 0; i < Length_Video; i++) {
-      let Id_video = Array_Video[0].items[i].id.videoId;
-      let Thumbnails = Array_Video[0].items[i].snippet.thumbnails.medium.url;
-      let Title = Array_Video[0].items[i].snippet.title;
+      let Id_video = Array_Video[i].id.videoId;
+      let Thumbnails = Array_Video[i].snippet.thumbnails.medium.url;
+      let Title = Array_Video[i].snippet.title;
       let output = `
             <div class="ytb-contents-container">
                 <a class="link" href="watch.html">
                     <div class="ytb-contents">
                         <div class="ytb-content-image">
-                            <img src="https://i.ytimg.com/vi/keCFnn0pPGw/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLAUPR6M5EqZpr-xLqhwRypLJ1eaXQ"/>
+                            <img src="${Thumbnails}"/>
                         </div>
                         <div class="ytb-content-title">
                             <div class="title">
-                                <h3>Tình Yêu Bát Cơm Rang</h3>
+                                <h3>${Title}</h3>
                             </div>
                             <div class="ytb-content-source">
                                 <span class="channel">Đình Dũng Official</span>

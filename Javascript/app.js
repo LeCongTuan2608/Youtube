@@ -41,13 +41,13 @@ function Menu_Active() {
       if (Menu_icon_List[i].getAttribute('index') == Index) {
          Menu_icon_List[i].classList.add('active');
       }
-      Menu_icon_List[i].setAttribute('onclick', 'clicked(this)');
+      // Menu_icon_List[i].setAttribute('onclick', 'clicked(this);');
+      Menu_icon_List[i].onclick = function () {
+         let getIndex = Menu_icon_List[i].getAttribute('index');
+         Index = getIndex;
+         Menu_Active();
+      };
    }
-}
-function clicked(element) {
-   let getIndex = element.getAttribute('index');
-   Index = getIndex;
-   Menu_Active();
 }
 
 const KeyWord = document.querySelector('.key_word');
@@ -71,31 +71,34 @@ Enter.addEventListener('keyup', function (event) {
 });
 // let url = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&key=" + apiKey + "&part=snippet,contentDetails";
 const url = 'https://youtube.googleapis.com/youtube/v3/search?';
-const parameter = 'part=snippet&maxResults=50&type=video';
+const parameter = 'part=snippet&maxResults=40&type=video';
 const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
-const Array_Video = []; //tạo 1 cái mảng rỗng
+let Array_Video = []; //tạo 1 cái mảng rỗng
 
 function search() {
-   Array_Video.shift(); // xóa phần tử đầu tiên trong mảng
+   Array_Video.splice(0, 40);
    fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
       .then(async (data) => data.json())
       .then(function (data) {
-         // data.items.map((item) => {
-         //    return Array_Video.push(item);
-         // });
-         Array_Video.push(data); //thêm data vào mảng
+         data.items.map((item) => {
+            return Array_Video.push(item);
+         });
+         console.log(Array_Video);
+         localStorage.setItem('Array_Video', JSON.stringify(Array_Video)); // set cho cái mảng đó thành string
          Result(Array_Video);
       })
       .catch(function (err) {
          // alert('Có lỗi khi fetch API!!!');
       });
 }
-// console.log('show', Array_Video);
-export { Array_Video };
 
+let Id_Video_Watch = '';
+let Title_Video_Watch = 'Yêu 5';
 const Contents_video = document.querySelector('.container-body-contents');
 function Result(Array_Video) {
    let Content = document.querySelectorAll('.container-body-content');
+   let Content_id = document.querySelectorAll('.container-body-content a');
+
    let Length_Content = Content.length;
    if (KeyWord.value != '') {
       // (if) nếu thanh tìm kiếm khác rỗng thì thực hiện
@@ -103,15 +106,17 @@ function Result(Array_Video) {
          Contents_video.removeChild(Content[index]); // xóa element
       }
    }
-   let Url_youtube = 'http://www.youtube.com/watch?v=';
-   let Length_Video = Array_Video[0].items.length;
+   let Length_Video = Array_Video.length;
    for (let i = 0; i < Length_Video; i++) {
-      let Id_video = Array_Video[0].items[i].id.videoId;
-      let Thumbnails = Array_Video[0].items[i].snippet.thumbnails.medium.url;
-      let Title = Array_Video[0].items[i].snippet.title;
+      let Id_video = Array_Video[i].id.videoId;
+      let Thumbnails = Array_Video[i].snippet.thumbnails.medium.url;
+      let Title = Array_Video[i].snippet.title;
+      let src = 'http://www.youtube.com/watch?v=';
+      Id_Video_Watch = Id_video;
+      Title_Video_Watch = Title;
       let output = `
-                <div class="container-body-content">
-                  <a class="link" href="${Url_youtube + Id_video}">
+               <div class="container-body-content index = ${i}">
+                  <a class="link id-video = ${Id_video}" href="watch.html" >
                     <div class="container-body-content-image">
                         <img src="${Thumbnails}">
                     </div>
@@ -121,7 +126,17 @@ function Result(Array_Video) {
                         </div>
                     </div>
                   </a>
-                </div>`;
+               </div>`;
+      Content[i].onclick = function () {
+         let getIndex = Content[i].getAttribute('index');
+         Index = getIndex;
+         if (Content[i].getAttribute('index') == Index) {
+            let getID = Content_id[i].getAttribute('id-video');
+            Id_Video_Watch = getID;
+         }
+      };
       Contents_video.insertAdjacentHTML('beforeend', output);
    }
 }
+
+export { Id_Video_Watch, Title_Video_Watch };
