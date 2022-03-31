@@ -1,9 +1,10 @@
 let Array_Video = JSON.parse(localStorage.getItem('Array_Video')); // đưa cái string trở về cái mảng
+let getID = JSON.parse(localStorage.getItem('getID'));
+let getTitle = JSON.parse(localStorage.getItem('getTitle'));
 console.log(Array_Video);
-
-import { Id_Video_Watch, Title_Video_Watch } from './app.js';
-console.log(Id_Video_Watch);
-console.log(Title_Video_Watch);
+console.log(getID);
+console.log(getTitle);
+// import { Id_Video_Watch, Title_Video_Watch } from './app.js';
 
 let Menu_Click = true;
 let Index = 0;
@@ -43,7 +44,7 @@ Micro.addEventListener('click', function () {
       alert('Xin lỗi tao chưa làm tính năng này, đừng click tao nữa!!!');
    } else if (Index == 2) {
       alert('Hơiizz, chết tiệc ... mày đang làm cái quái gì vậy hả?');
-      alert('Đã bảo là chưa làm mà cứ click, click vào ăn loz à ??');
+      alert('Đã bảo là chưa làm mà cứ click, click vào ăn cứt à ??');
       alert('click nữa liệu hồn tao!!');
    } else {
       alert('Đcm nói mà mày k nghe à ??');
@@ -125,26 +126,23 @@ function Video_Watching() {
    let title_music = document.querySelector('.title h2');
    Video_Watch.removeChild(Iframe);
    Title_Video.removeChild(title_music);
-   //Title_Video_Watch = tên bài hát
-   // Id_Video_Watch = id của video
    let src_video = 'https://www.youtube.com/embed/';
-   let id = 'y576-ONm5II';
    let output = `
          <iframe
             class="iframe_cls"
-            src="${src_video + id}"
+            src="${src_video + getID}"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen 
          ></iframe>`;
    let output_Title = `
          <div class="title">
-            <h2>${Title_Video_Watch}</h2>
+            <h2>${getTitle}</h2>
          </div>`;
    Video_Watch.insertAdjacentHTML('beforeend', output);
    Title_Video.insertAdjacentHTML('beforeend', output_Title);
 }
 Video_Watching();
-function Result_watch() {
+function Result_List_watch() {
    const Contents_video = document.querySelector('.ytb-list-contents');
    let Length_Video = Array_Video.length;
    // console.log('lenght:', Length_Video);
@@ -152,6 +150,7 @@ function Result_watch() {
       let Id_video = Array_Video[i].id.videoId;
       let Thumbnails = Array_Video[i].snippet.thumbnails.medium.url;
       let Title = Array_Video[i].snippet.title;
+      let Channel = Array_Video[i].snippet.channelTitle;
       let output = `
             <div class="ytb-contents-container">
                 <a class="link" href="watch.html">
@@ -164,7 +163,7 @@ function Result_watch() {
                                 <h3>${Title}</h3>
                             </div>
                             <div class="ytb-content-source">
-                                <span class="channel">Đình Dũng Official</span>
+                                <span class="channel">${Channel}</span>
                                 <span class="view">50N lượt xem</span>
                             </div>
                         </div>
@@ -174,4 +173,4 @@ function Result_watch() {
       Contents_video.insertAdjacentHTML('beforeend', output);
    }
 }
-Result_watch();
+Result_List_watch();
