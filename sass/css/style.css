@@ -242,7 +242,7 @@ body {
 .container-body-position-left-menu-width {
   padding: 15px 0;
   width: 80px;
-  height: 625px;
+  height: auto;
   justify-content: center;
   background-color: #ffffff;
   padding-top: 70px;

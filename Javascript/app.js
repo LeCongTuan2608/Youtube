@@ -50,7 +50,7 @@ function Menu_Active() {
    }
 }
 
-const KeyWord = document.querySelector('.key_word');
+var KeyWord = document.querySelector('.key_word');
 const Btn_Search = document.querySelector('.btn-seach');
 Btn_Search.addEventListener('click', () => {
    if (KeyWord.value == '') {
@@ -74,10 +74,19 @@ const url = 'https://youtube.googleapis.com/youtube/v3/search?';
 const parameter = 'part=snippet&maxResults=40&type=video';
 const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
 let Array_Video = []; //tạo 1 cái mảng rỗng
-
+let KeyWord_in_watch = JSON.parse(localStorage.getItem('KeyWord_in_watch'));
+function get_KeyWord() {
+   if (KeyWord.value == '') {
+      KeyWord = KeyWord_in_watch;
+   } else {
+      return KeyWord.value;
+   }
+}
+get_KeyWord();
+console.log(KeyWord);
 function search() {
    Array_Video.splice(0, 40);
-   fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
+   fetch(url + parameter + '&q=' + KeyWord + '&key=' + apiKey)
       .then(async (data) => data.json())
       .then(function (data) {
          data.items.map((item) => {
@@ -105,6 +114,7 @@ function Result(Array_Video) {
       }
    }
    var array_title = [];
+   var array_channel = [];
    let Length_Video = Array_Video.length;
    for (let i = 0; i < Length_Video; i++) {
       let Id_video = Array_Video[i].id.videoId;
@@ -112,6 +122,7 @@ function Result(Array_Video) {
       let Title = Array_Video[i].snippet.title;
       let Channel = Array_Video[i].snippet.channelTitle;
       array_title.push(Title);
+      array_channel.push(Channel);
       let output = `
                   <div class="container-body-content" number = ${i}>
                      <a class="link"  id-video = ${Id_video} href = "watch.html" >
@@ -140,9 +151,11 @@ function Result(Array_Video) {
          Index = getIndex;
          if (Contents[j].getAttribute('number') == Index) {
             let getID = Contents_id[j].getAttribute('id-video');
-            localStorage.setItem('getID', JSON.stringify(getID));
             let getTitle = array_title[j];
+            let getChannel = array_channel[j];
+            localStorage.setItem('getID', JSON.stringify(getID));
             localStorage.setItem('getTitle', JSON.stringify(getTitle));
+            localStorage.setItem('getChannel', JSON.stringify(getChannel));
          }
       };
    }

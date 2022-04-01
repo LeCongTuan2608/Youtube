@@ -1,9 +1,11 @@
 let Array_Video = JSON.parse(localStorage.getItem('Array_Video')); // đưa cái string trở về cái mảng
 let getID = JSON.parse(localStorage.getItem('getID'));
 let getTitle = JSON.parse(localStorage.getItem('getTitle'));
-console.log(Array_Video);
-console.log(getID);
-console.log(getTitle);
+let getChannel = JSON.parse(localStorage.getItem('getChannel'));
+
+// console.log(Array_Video);
+console.log('get id:', getID);
+console.log('get title:', getTitle);
 // import { Id_Video_Watch, Title_Video_Watch } from './app.js';
 
 let Menu_Click = true;
@@ -18,14 +20,16 @@ ReLoad.addEventListener('click', () => {
    window.location.replace('index.html');
 });
 
-const KeyWord = document.querySelector('.key_word');
+var KeyWord_in_watch = document.querySelector('.key_word');
 const Btn_Search = document.querySelector('.btn-seach');
 Btn_Search.addEventListener('click', () => {
-   if (KeyWord.value == '') {
+   if (KeyWord_in_watch.value == '') {
       alert('Bạn chưa nhập dữ liệu vào thanh tìm kiếm');
    }
    // console.log(KeyWord.value);
-   if (KeyWord.value != '') {
+   if (KeyWord_in_watch.value != '') {
+      localStorage.setItem('KeyWord_in_watch', JSON.stringify(KeyWord_in_watch.value));
+      window.location.replace('index.html');
       search();
    }
 });
@@ -121,27 +125,36 @@ icon_Dislike.addEventListener('click', function () {
 
 const Video_Watch = document.querySelector('.ytb-video');
 const Title_Video = document.querySelector('.title');
+const Channel_Subscribe_Video = document.querySelector('.channel-name');
 function Video_Watching() {
    let Iframe = document.querySelector('.iframe_cls');
    let title_music = document.querySelector('.title h2');
+   let channel_music = document.querySelector('.channel-name h4');
+   let Subscribe_Channel = document.querySelector('.channel-name span');
    Video_Watch.removeChild(Iframe);
    Title_Video.removeChild(title_music);
+   Channel_Subscribe_Video.removeChild(channel_music);
+   Channel_Subscribe_Video.removeChild(Subscribe_Channel);
    let src_video = 'https://www.youtube.com/embed/';
    let output = `
          <iframe
             class="iframe_cls"
-            src="${src_video + getID}"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            src="${src_video + getID}?autoplay=1"
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen 
          ></iframe>`;
    let output_Title = `
-         <div class="title">
-            <h2>${getTitle}</h2>
-         </div>`;
+            <h2>${getTitle}</h2>`;
+   let output_Channel = `
+            <h4>${getChannel}</h4>
+            <span>5Tr người đăng kí</span>`;
    Video_Watch.insertAdjacentHTML('beforeend', output);
    Title_Video.insertAdjacentHTML('beforeend', output_Title);
+   Channel_Subscribe_Video.insertAdjacentHTML('beforeend', output_Channel);
 }
 Video_Watching();
+var array_title = [];
+var array_channel = [];
 function Result_List_watch() {
    const Contents_video = document.querySelector('.ytb-list-contents');
    let Length_Video = Array_Video.length;
@@ -151,9 +164,11 @@ function Result_List_watch() {
       let Thumbnails = Array_Video[i].snippet.thumbnails.medium.url;
       let Title = Array_Video[i].snippet.title;
       let Channel = Array_Video[i].snippet.channelTitle;
+      array_title.push(Title);
+      array_channel.push(Channel);
       let output = `
-            <div class="ytb-contents-container">
-                <a class="link" href="watch.html">
+            <div class="ytb-contents-container" index = ${i}>
+                <a class="link" Id-Video = ${Id_video}" href = watch.html>
                     <div class="ytb-contents">
                         <div class="ytb-content-image">
                             <img src="${Thumbnails}"/>
@@ -171,6 +186,25 @@ function Result_List_watch() {
                 </a>
             </div>`;
       Contents_video.insertAdjacentHTML('beforeend', output);
+   }
+   let List_Contents_Video = document.querySelectorAll('.ytb-contents-container ');
+   let List_Contents_id = document.querySelectorAll('.ytb-contents-container a');
+   for (let j = 0; j < Length_Video; j++) {
+      List_Contents_Video[j].onclick = function () {
+         let getIndex = List_Contents_Video[j].getAttribute('number');
+         Index = getIndex;
+         if (List_Contents_Video[j].getAttribute('number') == Index) {
+            let getID = List_Contents_id[j].getAttribute('Id-Video');
+            let getTitle = array_title[j];
+            let getChannel = array_channel[j];
+            console.log(getID);
+            console.log(getTitle);
+            console.log(getChannel);
+            localStorage.setItem('getID', JSON.stringify(getID));
+            localStorage.setItem('getTitle', JSON.stringify(getTitle));
+            localStorage.setItem('getChannel', JSON.stringify(getChannel));
+         }
+      };
    }
 }
 Result_List_watch();
