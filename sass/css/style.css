@@ -263,6 +263,26 @@ body {
   padding: 15px;
   flex: 1;
   margin-top: 56px;
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.error h3 {
+  font-size: 25px;
+}
+
+.error h3 ion-icon {
+  vertical-align: middle;
+  margin-top: -2px;
+  padding: 5px;
+  font-size: 40px;
 }
 
 .container-body-position-right-content-active {

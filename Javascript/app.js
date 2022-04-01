@@ -100,7 +100,14 @@ function search() {
          Result(Array_Video);
       })
       .catch(function (err) {
-         // alert('Có lỗi khi fetch API!!!');
+         let output_error = `
+            <div class="error">
+               <h3>
+                  Ối dồi ôi!! Web đang bị lỗi rồi, giờ bạn cút đi lát lại
+                  sau<ion-icon name="sad-outline"></ion-icon>
+               </h3>
+            </div>`;
+         Contents_video.insertAdjacentHTML('beforeend', output_error);
       });
 }
 
