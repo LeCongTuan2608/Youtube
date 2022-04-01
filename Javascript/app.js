@@ -13,6 +13,7 @@ ReLoad.addEventListener('click', () => {
 
 const Btn_Menu = document.querySelector('.header-ytb-left-button-menu');
 const Length_Menu = document.querySelector('.container-body-position-left');
+const body_right = document.querySelector('.container-body-position-right');
 Btn_Menu.addEventListener('click', function () {
    let Content_Menu = document.querySelectorAll('.position-left-menu-bar ul li a');
    let Length = Content_Menu.length;
@@ -20,12 +21,14 @@ Btn_Menu.addEventListener('click', function () {
       for (let i = 0; i < Length; i++) {
          Content_Menu[i].classList.add('menu_active');
          Length_Menu.setAttribute('class', 'container-body-position-left-menu-width');
+         body_right.setAttribute('class', 'container-body-position-right-content-active');
       }
       Menu_Click = false;
    } else {
       for (let i = 0; i < Length; i++) {
          Content_Menu[i].classList.remove('menu_active');
          Length_Menu.setAttribute('class', 'container-body-position-left');
+         body_right.setAttribute('class', 'container-body-position-right');
       }
       Menu_Click = true;
    }

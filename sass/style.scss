@@ -2,6 +2,8 @@
 @import './mixins';
 html {
    font-size: 100%;
+   height: 100%;
+   width: 100%;
 }
 
 * {
@@ -11,12 +13,16 @@ html {
 
 body {
    background-color: $backgroundColor;
-}
-
-.container-header {
+   height: 100%;
    width: 100%;
+}
+.container-header {
+   margin: 0;
+   width: 100%;
+   flex-direction: column;
    position: fixed;
    z-index: 10;
+
 }
 .container-header-child {
    gap: 10%;
@@ -179,25 +185,30 @@ body {
 
 .container-body {
    background-color: $backgroundColor;
-   padding: 0;
+   height: 100%;
+   width: 100%;
+
 }
 
 .container-body-child {
+
    display: flex;
+   height: 100%;
 }
 
 .container-body-position-left {
    width: 240px;
-   height: auto;
    background-color: #ffffff;
    padding: 15px 0;
-   margin-top: 57px;
    position: relative;
+   margin-top: 56px;
 }
 .position-left-menu-bar {
    position: fixed;
    padding: 0 7px;
    z-index: 10;
+
+
 }
 .position-left-menu-bar ul li {
    height: 40px;
@@ -242,10 +253,9 @@ body {
 .container-body-position-left-menu-width {
    padding: 15px 0;
    width: 80px;
-   height: auto;
    justify-content: center;
    background-color: #ffffff;
-   padding-top: 70px;
+   margin-top: 56px;
 }
 
 // ============================
@@ -257,7 +267,13 @@ body {
 .container-body-position-right {
    padding: 15px;
    flex: 1;
-   margin-top: 57px;
+   margin-top: 56px;
+}
+.container-body-position-right-content-active{
+
+   padding: 15px;
+   flex: 1;
+   margin-top: 56px;
 }
 
 .container-body-contents {
@@ -347,7 +363,7 @@ body {
    }
    .position-left-menu-bar ul li {
       font-size: 25px;
-      font-family: $fontFamily;
+      font-family: $fontFamily_Body;
    }
 }
 
@@ -364,6 +380,26 @@ body {
    .container-body-position-left a {
       display: none;
    }
+   .position-left-menu-bar ul li a.menu_active {
+      display: block;
+   }
+   .container-body-position-left-menu-width {
+      position:fixed;
+      padding: 15px 0;
+      width: 240px;
+      height: 100%;
+      justify-content: center;
+      background-color: #ffffff;
+      margin-top: 56px;
+      z-index: 10;
+   }
+   .container-body-position-right-content-active{
+      margin-left: 80px;
+      padding: 15px;
+      flex: 1;
+      margin-top: 56px;
+   }
+
 }
 
 @media screen and (max-width: 1080px) {
@@ -397,15 +433,54 @@ body {
 }
 
 @media screen and (max-width: 720px) {
-   .container-header-child {
-      gap: 1%;
-   }
    .heaer-ytb-right-style {
       gap: 10px;
       margin-left: 20px;
    }
+   .container-header-child {
+      gap: 1%;
+   }
+   .container-body-position-left {
+      display: none;
+   }
+   .container-body-position-left-menu-width {
+      position:fixed;
+      padding: 15px 0;
+      width: 240px;
+      height: 100%;
+      justify-content: center;
+      background-color: #ffffff;
+      margin-top: 56px;
+      z-index: 10;
+   }
+   .container-body-position-right-content-active{
+      margin-left: 0px;
+      padding: 15px;
+      flex: 1;
+      margin-top: 56px;
+   }
+   .title {
+      font-size: $fontSize_title_video;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      white-space: normal;
+      line-height: 1;
+   }
+   
 }
+@media screen and (max-width: 622px) {
+   .container-body-contents {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 15px;
+   }
 
+   
+}
 @media screen and (max-width: 600px) {
    .container-header-child {
       gap: 0;
@@ -433,6 +508,13 @@ body {
    }
    .heaer-ytb-right-style {
       gap: 10px;
+   }
+   .container-body-contents {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 320px;
+      grid-gap: 15px;
+      justify-content: center;
    }
 }
 
@@ -465,4 +547,5 @@ body {
    .container-body-position-left {
       display: none;
    }
+
 }
