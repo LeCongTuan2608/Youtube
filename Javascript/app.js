@@ -3,6 +3,7 @@ let Index = 0;
 
 window.addEventListener('load', () => {
    Menu_Active();
+   KeyWord_begin();
    search();
 });
 
@@ -52,9 +53,18 @@ function Menu_Active() {
       };
    }
 }
+var KeyWord_in_watch = JSON.parse(localStorage.getItem('KeyWord_in_watch'));
+function KeyWord_begin() {
+   if (KeyWord.value == '') {
+      return (KeyWord.value = KeyWord_in_watch);
+   } else {
+      return KeyWord.value;
+   }
+}
 
 var KeyWord = document.querySelector('.key_word');
 const Btn_Search = document.querySelector('.btn-seach');
+var get_KeyWord = 'Thịnh hành';
 Btn_Search.addEventListener('click', () => {
    if (KeyWord.value == '') {
       alert('Bạn chưa nhập dữ liệu vào thanh tìm kiếm');
@@ -77,29 +87,28 @@ const url = 'https://youtube.googleapis.com/youtube/v3/search?';
 const parameter = 'part=snippet&maxResults=40&type=video';
 const apiKey = 'AIzaSyArduLszOeBXxOQfYg6iCRENRUYhJUx5Oo'; // key api
 let Array_Video = []; //tạo 1 cái mảng rỗng
-let KeyWord_in_watch = JSON.parse(localStorage.getItem('KeyWord_in_watch'));
-function get_KeyWord() {
-   if (KeyWord.value == '') {
-      KeyWord = KeyWord_in_watch;
-   } else {
-      return KeyWord.value;
-   }
-}
-get_KeyWord();
-console.log(KeyWord);
+// let KeyWord_in_watch = JSON.parse(localStorage.getItem('KeyWord_in_watch'));
+
+// function get_KeyWord() {
+//    if (KeyWord.value == '') {
+//       KeyWord = KeyWord_in_watch;
+//    } else {
+//       return (KeyWord.value = '');
+//    }
+// }
+
 function search() {
    Array_Video.splice(0, 40);
-   fetch(url + parameter + '&q=' + KeyWord + '&key=' + apiKey)
+   fetch(url + parameter + '&q=' + KeyWord.value + '&key=' + apiKey)
       .then(async (data) => data.json())
       .then(function (data) {
          data.items.map((item) => {
             return Array_Video.push(item);
          });
-         // console.log(Array_Video);
          localStorage.setItem('Array_Video', JSON.stringify(Array_Video)); // set cho cái mảng đó thành string
          Result(Array_Video);
       })
-      .catch(function (err) {
+      .catch(function (error) {
          let output_error = `
             <div class="error">
                <h3>
@@ -114,8 +123,7 @@ function search() {
 const Contents_video = document.querySelector('.container-body-contents');
 function Result(Array_Video) {
    let Content = document.querySelectorAll('.container-body-content');
-   let Content_id = document.querySelectorAll('.container-body-content a');
-
+   // let Content_id = document.querySelectorAll('.container-body-content a');
    let Length_Content = Content.length;
    if (KeyWord.value != '') {
       // (if) nếu thanh tìm kiếm khác rỗng thì thực hiện

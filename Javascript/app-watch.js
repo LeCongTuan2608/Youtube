@@ -30,9 +30,12 @@ Btn_Search.addEventListener('click', () => {
    if (KeyWord_in_watch.value != '') {
       localStorage.setItem('KeyWord_in_watch', JSON.stringify(KeyWord_in_watch.value));
       window.location.replace('index.html');
+
       search();
    }
 });
+
+console.log(KeyWord_in_watch.value);
 // bắt sự kiện enter
 const Enter = document.querySelector('.key_word');
 Enter.addEventListener('keyup', function (event) {
@@ -140,7 +143,7 @@ function Video_Watching() {
          <iframe
             class="iframe_cls"
             src="${src_video + getID}?autoplay=1"
-            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer;autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen 
          ></iframe>`;
    let output_Title = `
