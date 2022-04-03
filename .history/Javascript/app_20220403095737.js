@@ -1,5 +1,6 @@
 let Menu_Click = true;
 let Index = 0;
+KeyWord.value = '';
 window.addEventListener('load', () => {
    Menu_Active();
    KeyWord_begin();

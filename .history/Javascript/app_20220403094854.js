@@ -1,9 +1,10 @@
 let Menu_Click = true;
 let Index = 0;
+
 window.addEventListener('load', () => {
    Menu_Active();
    KeyWord_begin();
-   search();
+   // search();
 });
 
 const ReLoad = document.querySelector('.header-ytb-left-logo-child');

@@ -216,7 +216,6 @@ body {
    background-color: #9ecddb;
 }
 .container-body-position-left {
-   transition: 1s ease;
    width: 240px;
    background-color: #ffffff;
    padding: 15px 0;
@@ -271,7 +270,6 @@ body {
 }
 
 .container-body-position-left-menu-width {
-   transition: 1s ease;
    padding: 15px 0;
    width: 80px;
    justify-content: center;
@@ -317,7 +315,6 @@ body {
 
 
 .container-body-contents {
-   height: 100%;
    width: 100%;
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
