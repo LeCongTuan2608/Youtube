@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube</title>
+    <link rel="stylesheet" href="./sass/css/style.css" />
+    <link rel="stylesheet" href="./Javascript/app.js" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
+    <script nomodule src="https: // unkg .com / ionicons @ 5.5.2 / dist / ionicons / ionicons.js ">
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <div class="container-header-child">
+                <div class="header-ytb-left">
+                    <div class="header-ytb-left-button-menu">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div class="header-ytb-left-logo">
+                        <div class="header-ytb-left-logo-child" >
+                            <div class="logo">
+                                <ion-icon name="logo-youtube"></ion-icon>
+                            </div>
+                            <div class="ytb">
+                                <a >Youtube</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-ytb-center">
+                    <div class="header-ytb-center-seach">
+                        <from name="myFrom" action="">
+                            <div class="header-ytb-center-seach-input">
+                                <input type="text" class="key_word" placeholder="Tìm kiếm">
+                                <button type="search" class="btn-seach"><ion-icon name="search-outline"></ion-icon></button>
+                            </div>
+                            <div class="header-ytb-center-seach-micro">
+                                <ion-icon name="mic"></ion-icon>
+                            </div>
+                        </from>
+                    </div>
+                </div>
+
+                <div class="header-ytb-right">
+                    <div class="heaer-ytb-right-style">
+                        <ion-icon name="color-palette-outline"></ion-icon>
+                        <ion-icon name="duplicate-outline"></ion-icon>
+                        <ion-icon name="film-outline"></ion-icon>
+                        <ion-icon name="notifications-circle-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-body">
+        <div class="container-body-child">
+            <div class="container-body-position-left">
+                <div class="position-left-menu-bar">
+                    <ul class="menu">
+                        <li class="active" index="0" >
+                            <ion-icon name="home-outline"></ion-icon><a>Trang chủ</a></li>
+                        <li index="1">
+                            <ion-icon name="compass-outline"></ion-icon><a>Khám phá</a></li>
+                        <li index="2">
+                            <ion-icon name="flash-outline"></ion-icon><a>Shorts</a></li>
+                        <li index="3">
+                            <ion-icon name="bag-check-outline"></ion-icon><a>Kênh đăng kí</a></li>
+                        <li index="4">
+                            <ion-icon name="albums-outline"></ion-icon><a>Thư viện</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container-body-position-right">
+                <div class="container-body-contents">
+                    <div class="container-body-content">
+                         <a class="link" href="https://www.youtube.com/watch?v=keCFnn0pPGw">
+                            <div class="container-body-content-image">
+                                <img src="https://i.ytimg.com/vi/keCFnn0pPGw/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLAUPR6M5EqZpr-xLqhwRypLJ1eaXQ">
+                            </div>
+                            <div class="container-body-content-title">
+                                <div class="container-body-content-title-media">
+                                    <h3 class="title">Đế Vương</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="container-body-content">
+                        <a class="link" href="https://www.youtube.com/watch?v=lZYOp1B_OZs">
+                           <div class="container-body-content-image">
+                               <img src="https://i.ytimg.com/vi/lZYOp1B_OZs/mqdefault.jpg">
+                           </div>
+                           <div class="container-body-content-title">
+                               <div class="container-body-content-title-media">
+                                   <h3 class="title">Tình Yêu Bát Cơm Rang</h3>
+                               </div>
+                           </div>
+                       </a>
+                   </div>            
+
+                   
+                   <div class="container-body-content">
+                        <a class="link" href="https://www.youtube.com/watch?v=DWYwmTdXpqw&list=RDDWYwmTdXpqw&start_radio=1">
+                        <div class="container-body-content-image">
+                            <img src="data:image/jpeg;base64,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">
+                        </div>
+                        <div class="container-body-content-title">
+                            <div class="container-body-content-title-media">
+                                <h3 class="title">Cuộc Sống Em Ổn Khum?</h3>
+                            </div>
+                        </div>
+                        </a>
+                    </div>   
+
+                    <div class="container-body-content">
+                        <div class="container-body-content-image">
+                            <img src="https://i.ytimg.com/vi/keCFnn0pPGw/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLAUPR6M5EqZpr-xLqhwRypLJ1eaXQ">
+                        </div>
+                        <div class="container-body-content-title">
+                            <div class="container-body-content-title-media">
+                                <h3 class="title">Đế Vương</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="./Javascript/app.js"></script>
+
+</html>

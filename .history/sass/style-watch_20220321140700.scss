@@ -1,0 +1,75 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu-bar {
+   display: none;
+}
+main {
+   width: 100%;
+   height: auto;
+   position: absolute;
+   margin-top: 57px;
+   background-color: #fff;
+}
+.ytb-watch {
+   display: flex;
+   justify-content: center;
+}
+.ytb-watch-video {
+   flex-direction: column;
+}
+.ytb-watch-video-child {
+   padding: 20px;
+}
+.ytb-video video {
+   width: 890px;
+   height: 500px;
+}
+.ytb-watch-contents {
+   width: 400px;
+   height: 400px;
+   margin: 20px 20px 0 0;
+}
+
+.ytb-contents-container {
+}
+.ytb-contents-container a {
+   text-decoration: none;
+   color: black;
+}
+.ytb-contents {
+   display: flex;
+}
+.ytb-content-image {
+   flex-direction: row;
+   padding-right: 5px;
+}
+.ytb-content-image img {
+   height: 100px;
+   width: 170px;
+}
+.ytb-content-title {
+   flex: 1;
+}
+.ytb-content-title .title {
+   padding-bottom: 5px;
+}
+.ytb-content-source {
+   display: flex;
+}
+.ytb-content-source .channel {
+   flex-direction: column;
+   color: rgb(128, 128, 128);
+}
+.ytb-content-source .view {
+   color: rgb(128, 128, 128);
+}

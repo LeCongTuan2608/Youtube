@@ -1,0 +1,21 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu-bar {
+   display: none;
+}
+
+.ytb-watch {
+   padding-top: 40px;
+   display: flex;
+   flex-direction: column;
+}

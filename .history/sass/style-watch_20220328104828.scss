@@ -1,0 +1,209 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: rgb(241, 219, 219);
+}
+.menu-bar {
+   display: none;
+}
+main {
+   width: 100%;
+   height: auto;
+   position: absolute;
+   margin-top: 57px;
+}
+.ytb-watch {
+   display: flex;
+   justify-content: center;
+}
+.ytb-watch-video {
+   width: 61%;
+   height: 100%;
+   flex-direction: column;
+}
+.ytb-watch-video-child {
+   padding: 20px;
+}
+// .ytb-video-play {
+// }
+.ytb-video iframe {
+   width: 100%;
+   min-height: 500px;
+   border: none;
+}
+.ytb-watch-contents {
+   width: 400px;
+   height: auto;
+   margin: 20px 20px 0 0;
+}
+
+.ytb-contents-container {
+   padding-bottom: 5px;
+   display: inline;
+}
+.ytb-contents-container a {
+   text-decoration: none;
+   color: black;
+}
+.ytb-contents {
+   display: flex;
+}
+.ytb-content-image {
+   flex-direction: row;
+   padding-right: 5px;
+}
+.ytb-content-image img {
+   height: 100px;
+   width: 175px;
+}
+.ytb-content-title {
+   flex: 1;
+}
+.ytb-content-title .title {
+   font-size: 14px;
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+   white-space: normal;
+   line-height: 1;
+}
+.ytb-content-source {
+   display: flex;
+   flex-direction: column;
+}
+.ytb-content-source .channel {
+   color: rgb(128, 128, 128);
+}
+.ytb-content-source .view {
+   color: rgb(128, 128, 128);
+}
+.ytb-video-info {
+   width: 100%;
+   height: auto;
+   border-bottom-style: solid;
+   border-width: 2px;
+   border-color: rgb(187, 187, 187);
+}
+//channel
+.info-container {
+   padding: 15px 0 5px 0;
+   position: relative;
+}
+.info-container .title h2 {
+   font-size: 23px;
+   font-weight: 400;
+   line-height: 1;
+   overflow: hidden;
+}
+.view-emotion {
+   padding: 10px 0 10px 0;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.view {
+   margin-right: 5%;
+   color: rgb(128, 128, 128);
+}
+.emotion {
+   display: flex;
+   flex: 1;
+   justify-content: space-between;
+}
+.emotion a {
+   line-height: 1;
+   font-size: 18px;
+   text-align: center;
+   cursor: pointer;
+}
+.emotion a:active {
+   color: red;
+}
+.emotion ion-icon {
+   padding: 5px 8px 5px 8px;
+   vertical-align: middle;
+   margin-top: -5px;
+}
+.icon-liked {
+   color: red;
+}
+.icon-disliked {
+   color: red;
+}
+.ytb-video-channel {
+   width: 100%;
+   height: auto;
+}
+.channel-container {
+   padding: 10px 0 10px 0;
+}
+.container-top {
+   width: 100%;
+}
+.channel-information {
+   display: flex;
+}
+.channel-image {
+   padding-right: 20px;
+   cursor: pointer;
+}
+.channel-image img {
+   width: 55px;
+   height: 55px;
+   border-radius: 100rem;
+   background-size: cover;
+}
+.channel-name {
+   display: flex;
+   flex: 1;
+   line-height: 1.3;
+   flex-direction: column;
+   justify-content: center;
+   display: inline;
+}
+.channel-name h4 {
+   cursor: pointer;
+}
+@media screen and (max-width: 1145px) {
+   .view-emotion .view {
+      display: none;
+   }
+}
+@media screen and (max-width: 1020px) {
+   .ytb-watch {
+      padding: 0 25px 25px 25px;
+      display: block;
+   }
+   .ytb-watch-video {
+      width: 100%;
+      flex-direction: column;
+   }
+   // .ytb-watch-video-child {
+   // }
+   // .ytb-video-play {
+   // }
+   .ytb-video iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+   }
+   .view-emotion .view {
+      display: block;
+   }
+}
+
+@media screen and (max-width: 755px) {
+   .view-emotion .view {
+      display: none;
+   }
+}

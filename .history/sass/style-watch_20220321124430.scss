@@ -1,0 +1,23 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu ul li {
+   height: 40px;
+   gap: 20px;
+   padding: 0 20px;
+   border-radius: 5px;
+   display: flex;
+   font-family: $fontFamily_Body;
+   cursor: pointer;
+   justify-content: space-around;
+   align-items: center;
+}

@@ -1,0 +1,47 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu-bar {
+   display: none;
+}
+main {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   margin-top: 57px;
+   background-color: rgb(235, 235, 235);
+}
+.ytb-watch {
+   display: flex;
+   justify-content: center;
+}
+.ytb-watch-video {
+   flex-direction: column;
+}
+.ytb-watch-video-child {
+   padding: 20px;
+}
+.ytb-video video {
+   width: 850px;
+   height: 500px;
+}
+.ytb-watch-contents {
+   width: 400px;
+   height: 400px;
+   margin: 20px 20px 0 0;
+}
+.ytb-list-contents {
+}
+.container-body-content-image img {
+   height: 130px;
+   width: 230px;
+}

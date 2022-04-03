@@ -1,0 +1,34 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu-bar {
+   display: none;
+}
+main {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   margin-top: 57px;
+}
+.ytb-watch {
+   display: flex;
+   align-items: center;
+}
+.ytb-watch-video {
+   flex-direction: column;
+}
+.ytb-watch-contents {
+}
+.container-body-content-image img {
+   height: 130px;
+   width: 230px;
+}

@@ -1,0 +1,62 @@
+html {
+   font-size: 100%;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #fff;
+}
+.menu-bar {
+   display: none;
+}
+main {
+   width: 100%;
+   height: auto;
+   position: absolute;
+   margin-top: 57px;
+   background-color: rgb(235, 235, 235);
+}
+.ytb-watch {
+   display: flex;
+   justify-content: center;
+}
+.ytb-watch-video {
+   flex-direction: column;
+}
+.ytb-watch-video-child {
+   padding: 20px;
+}
+.ytb-video video {
+   width: 890px;
+   height: 500px;
+}
+.ytb-watch-contents {
+   width: 400px;
+   height: 400px;
+   margin: 20px 20px 0 0;
+}
+
+.ytb-contents-container {
+   margin: 5px;
+}
+.ytb-contents-container a {
+   text-decoration: none;
+   color: black;
+}
+.ytb-contents {
+   display: flex;
+}
+
+.ytb-content-image img {
+   flex-direction: row;
+   height: 100px;
+   width: 170px;
+   padding-right: 5px;
+}
+.ytb-content-title .title {
+   padding-bottom: 6px;
+}
