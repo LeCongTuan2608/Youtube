@@ -181,6 +181,9 @@ main {
 
 .channel-container {
   padding: 10px 0 10px 0;
+  border-bottom-style: solid;
+  border-width: 2px;
+  border-color: #bbbbbb;
 }
 
 .container-top {
@@ -214,6 +217,70 @@ main {
 
 .channel-name h4 {
   cursor: pointer;
+}
+
+.ytb-video-comment {
+  width: 100%;
+}
+
+.comment-container {
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ytb-video-comment img {
+  border-radius: 100rem;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+}
+
+.comment {
+  padding: 0 15px 0 15px;
+  border-radius: 8px;
+  height: 40px;
+  width: 85%;
+  border: none;
+  background-color: #f1f1f1;
+}
+
+.ytb-video-comment ion-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.ytb-video-comment ion-icon:active {
+  color: #0cb46b;
+}
+
+.ytb-video-commented {
+  width: 100%;
+}
+
+.commented-container {
+  padding: 10px 0 10px 0;
+  display: flex;
+}
+
+.commented-container img {
+  height: 40px;
+  width: 40px;
+  margin-right: 15px;
+  border-radius: 100rem;
+  background-size: cover;
+}
+
+.commented-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100px;
+}
+
+.commented-content p {
+  line-height: 1.4;
 }
 
 @media screen and (max-width: 1145px) {
