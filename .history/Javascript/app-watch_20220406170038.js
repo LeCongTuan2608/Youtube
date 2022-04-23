@@ -3,7 +3,7 @@ let getID = JSON.parse(localStorage.getItem('getID'));
 let getTitle = JSON.parse(localStorage.getItem('getTitle'));
 let getChannel = JSON.parse(localStorage.getItem('getChannel'));
 let getComments = JSON.parse(localStorage.getItem('array_comments'));
-
+console.log(getComments);
 // console.log(Array_Video);
 console.log('get id:', getID);
 console.log('get title:', getTitle);
@@ -234,7 +234,7 @@ const Send = document.querySelector('.send');
 const Comment_Text = document.querySelector('.comment');
 const Commented_Text_Container = document.querySelector('.ytb-video-commented');
 let array_comments = [];
-Send.addEventListener('click', () => {
+Send.addEventListener('click', function () {
    if (Comment_Text.value == '') {
       alert('Bạn chưa nhập bình luận');
    } else {

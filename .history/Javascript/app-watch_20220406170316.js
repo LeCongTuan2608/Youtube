@@ -3,7 +3,7 @@ let getID = JSON.parse(localStorage.getItem('getID'));
 let getTitle = JSON.parse(localStorage.getItem('getTitle'));
 let getChannel = JSON.parse(localStorage.getItem('getChannel'));
 let getComments = JSON.parse(localStorage.getItem('array_comments'));
-
+console.log(getComments);
 // console.log(Array_Video);
 console.log('get id:', getID);
 console.log('get title:', getTitle);
